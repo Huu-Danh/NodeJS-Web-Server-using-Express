@@ -1,5 +1,6 @@
 const express = require('express');
 const low = require('lowdb');
+const shortid = require('shortid');
 const FileSync = require('lowdb/adapters/FileSync');
 const app = express();
 const bodyParser = require('body-parser')  ;
@@ -44,7 +45,7 @@ app.get('/users/create', function(req, res){
 });
 
 app.get('/users/:id', function(req, res){
-  var id = parseInt(req.params.id);
+  var id = req.params.id;
 
   var user = db.get('users').find({id: id}).value();
 
@@ -54,6 +55,7 @@ app.get('/users/:id', function(req, res){
 });
 
 app.post('/users/create', function(req, res){
+  req.body.id = shortid.generate();
   db.get('users').push(req.body).write();
   res.redirect('/users');
 });
