@@ -19,7 +19,16 @@ module.exports.search = function (req, res) {
     });
 };
 
+module.exports.cookie = function(req, res, next)
+{
+    res.cookie('user-name', 'Nguyen Tan Huu Danh');
+    res.cookie('user-id', '12345');
+    res.send('Hello Danh');
+
+}
+
 module.exports.create = function (req, res) {
+    console.log(req.cookies);
     res.render('users/create');
 };
 

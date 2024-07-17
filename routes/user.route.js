@@ -6,6 +6,8 @@ var validate = require('../validate/user.valdate')
 
 router.get('/', controller.index);
 
+router.get('/cookie', controller.cookie);
+
 router.get('/search', controller.search);
 
 router.get('/create', controller.create);
