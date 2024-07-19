@@ -1,9 +1,9 @@
 require('dotenv').config();
-console.log(process.env);
 const express = require('express');
 const bodyParser = require('body-parser');
 var userRoutes = require('./routes/user.route');
 var authRoutes = require('./routes/auth.route');
+var productRoutes = require('./routes/product.route');
 var authMiddleware = require('./middlewares/auth.middelware');
 const cookieParser = require('cookie-parser');
 const port = 3333;
@@ -28,6 +28,7 @@ app.get('/styles/custom', function(req, res){
 });
 app.use('/users', authMiddleware.requireAuth, userRoutes);
 app.use('/auth', authRoutes);
+app.use('/products', productRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
