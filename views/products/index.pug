@@ -32,11 +32,11 @@ block content
         li.page-item
         a.page-link(href='products?page='+(cur > 0 ? (cur - 1) : 0)) Previous
         li.page-item
-        a.page-link(href='#') 1
+        a.page-link(href='products?page=1') 1
         li.page-item
-        a.page-link(href='#') 2
+        a.page-link(href='products?page=2') 2
         li.page-item
-        a.page-link(href='#') 3
+        a.page-link(href='products?page=3') 3
         li.page-item
-        a.page-link(href='products?page='+(start < total ? (start + 1) : total)) Next
+        a.page-link(href='products?page='+(cur < total ? (cur + 1) : total)) Next
 
