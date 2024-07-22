@@ -733,5 +733,35 @@
       "email": "jomohun2r@go.com",
       "description": "nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis"
     }
+  ],
+  "sessions": [
+    {
+      "id": "_v8BRKFIq",
+      "cart": [
+        null,
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "DNvTrJp0z",
+      "cart": {
+        "1": 1,
+        "6": 1,
+        "${productId}": 1
+      }
+    },
+    {
+      "id": "v8Si6XDij"
+    },
+    {
+      "id": "znT0w6KHW",
+      "cart": [
+        null,
+        null,
+        3
+      ]
+    }
   ]
 }

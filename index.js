@@ -1,10 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+
 var userRoutes = require('./routes/user.route');
 var authRoutes = require('./routes/auth.route');
 var productRoutes = require('./routes/product.route');
+var cartRoutes = require('./routes/cart.route');
+
 var authMiddleware = require('./middlewares/auth.middelware');
+var sessionMiddleware = require('./middlewares/session.middleware');
 const cookieParser = require('cookie-parser');
 const port = 3333;
 const app = express();
@@ -15,6 +19,7 @@ app.set('views', './views');
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(sessionMiddleware);
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
@@ -23,12 +28,13 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/styles/custom', function(req, res){
+app.get('/styles/custom', function (req, res) {
 
 });
 app.use('/users', authMiddleware.requireAuth, userRoutes);
 app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
+app.use('/cart', cartRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
